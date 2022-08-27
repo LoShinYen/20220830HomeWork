@@ -1,6 +1,6 @@
 using System;
 
-namespace _20220830HomeWork.Models
+namespace SqlModels.Models
 {
     public class ErrorViewModel
     {

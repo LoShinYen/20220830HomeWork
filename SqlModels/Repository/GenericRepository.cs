@@ -1,4 +1,4 @@
-﻿using _20220830HomeWork.Models;
+﻿using SqlModels.Models;
 using Microsoft.EntityFrameworkCore;
 using SqlModels.Repository.Interface;
 using System;
@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace SqlModels.Repository
 {
-    public class Repository : IRepository
+    public class GenericRepository : IRepository
     {
         #region --DB --
         private readonly NorthwindContext _DbContext;
 
-        public Repository(NorthwindContext dbContext)
+        public GenericRepository(NorthwindContext dbContext)
         {
             _DbContext = dbContext;
         }

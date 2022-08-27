@@ -1,4 +1,4 @@
-﻿using _20220830HomeWork.Models;
+﻿using SqlModels.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20220830HomeWork.Controllers
+namespace SqlModels.Controllers
 {
     public class HomeController : Controller
     {

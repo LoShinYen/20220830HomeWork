@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace _20220830HomeWork.Models
+namespace SqlModels.Models
 {
     public partial class NorthwindContext : DbContext
     {

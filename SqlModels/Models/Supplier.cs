@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace _20220830HomeWork.Models
+namespace SqlModels.Models
 {
     public partial class Supplier
     {

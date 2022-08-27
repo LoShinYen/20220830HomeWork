@@ -1,4 +1,5 @@
-﻿using SqlModels.Repository.Interface;
+﻿using AutoMapper;
+using SqlModels.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Services.Interface
     public interface IBaseService
     {
         public IRepository Repostiory { get; }
+        public IMapper Mapper { get; }
 
         void Create<TEntity> (TEntity entity) where TEntity :class;
         void Delete<TEntity> (TEntity entity) where TEntity :class;

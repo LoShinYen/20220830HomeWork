@@ -1,0 +1,29 @@
+﻿@model ProductVM
+
+
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model.ProductList)
+		{
+			<tr>
+				<td>@item.ProductId</td>
+				<td>@item.ProductName</td>
+				<td>@item.CategoryID</td>
+				<td>@item.CategoryName</td>
+				<td>@item.ProductPrice</td>
+				<td>@item.ProductStock</td>
+			</tr>
+		}
+
+	</tbody>
+</table>

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
 
-namespace _20220830HomeWork.Models
+namespace SqlModels.Models
 {
     public partial class Product
     {
@@ -23,6 +24,7 @@ namespace _20220830HomeWork.Models
         public short? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
 
+        [JsonIgnore]
         public virtual Category Category { get; set; }
         public virtual Supplier Supplier { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

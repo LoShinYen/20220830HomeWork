@@ -1,4 +1,4 @@
-using _20220830HomeWork.Models;
+using SqlModels.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20220830HomeWork
+namespace SqlModels
 {
     public class Startup
     {
@@ -37,12 +37,17 @@ namespace _20220830HomeWork
             #endregion
 
             #region -- IRepository --
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IRepository, GenericRepository>();
             #endregion
 
             #region --IBaseService --
             services.AddScoped<IBaseService, BaseService>();
             #endregion
+            #region -- mapper --
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            #endregion
+
+            services.AddScoped<IProductService , ProductService>();
 
             services.AddControllersWithViews();
         }

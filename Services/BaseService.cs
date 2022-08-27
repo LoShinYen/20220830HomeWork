@@ -1,4 +1,5 @@
-﻿using Services.Interface;
+﻿using AutoMapper;
+using Services.Interface;
 using SqlModels.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,17 @@ namespace Services
     public class BaseService : IBaseService
     {
         private readonly IRepository _Repository;
+        private readonly IMapper _Mapper;
 
-        public BaseService(IRepository repository)
+        public BaseService(IRepository repository , IMapper mapper)
         {
             _Repository = repository;
+            _Mapper = mapper;
         }
 
         public IRepository Repostiory { get { return _Repository; } }
+
+        public IMapper Mapper { get { return _Mapper; } }
 
         public void Create<TEntity>(TEntity entity) where TEntity : class
         {
