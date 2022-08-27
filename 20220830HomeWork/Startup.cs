@@ -1,9 +1,15 @@
+using _20220830HomeWork.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services;
+using Services.Interface;
+using SqlModels.Repository;
+using SqlModels.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +29,21 @@ namespace _20220830HomeWork
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region -- DB --
+            services.AddDbContext<NorthwindContext>(option =>
+            {
+                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+            #endregion
+
+            #region -- IRepository --
+            services.AddScoped<IRepository, Repository>();
+            #endregion
+
+            #region --IBaseService --
+            services.AddScoped<IBaseService, BaseService>();
+            #endregion
+
             services.AddControllersWithViews();
         }
 
