@@ -2,7 +2,12 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <h1 class="display-4">20220830-永慶面試MVC網站</h1>
+    <p>面試官您好，我是羅世晏以下是我這次MVC面試之作品</p>
+    <ul class=" list-group">
+        <li class="list-group-item">1.本作品對資料庫存取主要使用 Entity Framework Core。</li>
+        <li class="list-group-item">2.MVC網站主要是針對Northwind資料庫Product做CRUD。</li>
+        <li class="list-group-item">3.此作業之分層架構主要區分為Controller、View、Model，其中將Model之商業邏輯、資料庫存取分成兩個類別庫分別為Services、SqlModel方便維護或未來擴充，再使用介面、DI相依性注入方式達成降耦。</li>
+    </ul>
 </div>

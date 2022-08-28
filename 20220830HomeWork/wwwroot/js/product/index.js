@@ -35,7 +35,7 @@ btn_Save.addEventListener('click', async function () {
     })
     let createFetch = await fetch(request)
     let response = await createFetch.json()
-    debugger
+
     if (response.success == true) {
         alert(`${response.msg}`)
         BtnToggle()

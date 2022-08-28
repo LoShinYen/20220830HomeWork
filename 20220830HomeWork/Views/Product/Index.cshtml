@@ -2,6 +2,7 @@
 @section Css{
 <link rel="stylesheet" href="~/css/product/index.css" asp-append-version="true" />
 }
+
 <div class="col-12 d-flex flex-wrap">
 	<div class="col-12 mb-2 d-flex justify-content-end">
 		<button class="Btn-Product btn btn-success">新增</button>
@@ -36,8 +37,6 @@
 				<input type="submit" class="Btn-Save btn btn-success" value="保存" />
 			</div>
 		</div>
-
-
 	</div>
 
 	<table class="table">
@@ -54,6 +53,7 @@
 		<tbody>
 			@foreach (var item in Model.ProductList)
 			{
+
 				<tr>
 					<td>
 						@item.ProductId
@@ -73,7 +73,6 @@
 					<td class="d-flex flex-wrap">
 						<a asp-action="Edit" asp-route-id="@item.ProductId" class="col-5 mr-1 btn btn-primary">編輯</a>
 						<a onclick="Delete(@item.ProductId)" class="col-5 btn btn-danger ">刪除</a>
-
 					</td>
 				</tr>
 			}
