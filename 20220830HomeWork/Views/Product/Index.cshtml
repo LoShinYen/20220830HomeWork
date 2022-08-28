@@ -1,12 +1,5 @@
 ﻿@model ProductVM
 
-@*<nav>
-	<ul>
-	<li class="btn btn-primary">編輯</li>
-	<li class="btn btn-success">確認</li>
-	<li class="btn btn-primary">刪除</li>
-	</ul>
-	</nav>*@
 <div >
 	<table class="table">
 		<thead>
@@ -40,13 +33,11 @@
 					</td>
 					<td>
 						<a asp-action="Edit" asp-route-id="@item.ProductId" class="col-4 btn btn-primary">編輯</a> |
-						<a asp-action="" asp-route-id="" class="col-4 btn btn-danger">刪除</a> |
-						@*<a asp-action="" asp-route-id="" class="col-4 btn btn-primary"></a> |*@
+						<a onclick="Delete(@item.ProductId)" class="col-4 btn btn-danger">刪除</a> |
 
 					</td>
 				</tr>
 			}
-
 		</tbody>
 	</table>
 
@@ -55,7 +46,9 @@
 
 
 
-
+@section JaveScript{
+	<script src="~/js/product/index.js"></script>
+}
 
 
 

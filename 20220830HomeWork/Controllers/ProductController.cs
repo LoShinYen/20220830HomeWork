@@ -25,6 +25,7 @@ namespace SqlModels.Controllers
             {
                 ProductList = _mapper.Map<List<ProductDato>>(_productService.ProductList())
             };
+
             return View(result);
         }
 
@@ -47,21 +48,15 @@ namespace SqlModels.Controllers
         public IActionResult Edit([FromForm] ProductVM model)
         {
             var result = _productService.EditProduct(model);
-            if (result == true)
-            {
-                TempData["Edit"] = "更改成功";
-            }
-            else
-            {
-                TempData["Edit"] = "更改失敗";
-            }
+            TempData["Edit"] = result.msg;
             return RedirectToAction("Edit",model.EditProduct.ProductId);
         }
 
-
+        [HttpPost]
         public IActionResult Delete(int id)
         {
-            return RedirectToAction("Index");
+            var result = _productService.DeleteProduct(id);
+            return Ok(result);
         }
     }
 }

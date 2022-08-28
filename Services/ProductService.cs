@@ -33,7 +33,7 @@ namespace Services
             return product;
         }
 
-        public bool EditProduct(ProductVM model)
+        public ChangeResponseDTO EditProduct(ProductVM model)
         {
             var data = model.EditProduct;
             var product = Repostiory.FindBy<Product>(x => x.ProductId == data.ProductId).FirstOrDefault();
@@ -44,16 +44,36 @@ namespace Services
             try
             {
                 Update<Product>(product);
-                return true;
+                return ResponseMsg(true, "更改成功");
             }
             catch (Exception ex)
             { 
-                return false ;
+                return ResponseMsg(false, $"{ex}"); 
             }
-
+        }
+        public ChangeResponseDTO DeleteProduct(int id)
+        { 
+            var product = Repostiory.FindBy<Product>(x=>x.ProductId == id).FirstOrDefault();
+            try
+            {
+                Delete<Product>(product);
+                return ResponseMsg(true, "成功刪除"); ;
+            }
+            catch (Exception ex)
+            {
+                return ResponseMsg(false, $"{ex}"); ;
+            }
         }
 
 
-
+        public ChangeResponseDTO ResponseMsg(bool isSuccess, string msg)
+        {
+            var result = new ChangeResponseDTO()
+            {
+                Success = isSuccess,
+                msg = msg
+            };
+            return result;
+        }
     }
 }

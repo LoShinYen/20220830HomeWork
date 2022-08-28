@@ -14,7 +14,7 @@ namespace SqlModels.Models
 
         public NorthwindContext(DbContextOptions<NorthwindContext> options)
             : base(options)
-        {
+        { 
         }
 
         public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; }
@@ -453,12 +453,13 @@ namespace SqlModels.Models
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Order_Details_Orders");
-
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.OrderDetails)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Details_Products");
+                
+                //因無規劃使用暫時斷開關連
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.OrderDetails)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Order_Details_Products");
             });
 
             modelBuilder.Entity<OrderDetailsExtended>(entity =>

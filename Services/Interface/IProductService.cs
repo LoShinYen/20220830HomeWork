@@ -11,6 +11,7 @@ namespace Services.Interface
     {
         public List<ProductDTO> ProductList();
         public ProductItemDTO EditProduct(int id);
-        public bool EditProduct(ProductVM model);
+        public ChangeResponseDTO EditProduct(ProductVM model);
+        public ChangeResponseDTO DeleteProduct(int id);
     }
 }
