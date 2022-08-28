@@ -1,0 +1,12 @@
+﻿.Product-Box {
+    position: fixed;
+    z-index: 1;
+    top: 10em;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 30%;
+    background: #79ade1;
+    border:2px solid #000;
+    border-radius:5px;
+}

@@ -26,6 +26,40 @@ namespace Services
             return product;
         }
 
+        public ChangeResponseDTO CreateProduct(ProductVM.ProductDato model)
+        {
+            var nameIsRepeat = Repostiory.FindBy<Product>(x => x.ProductName == model.ProductName).FirstOrDefault();
+            
+            if (nameIsRepeat != null)
+            {
+                return ResponseMsg(false, "產品名稱重複");
+            }
+
+            var categoryIsReat = Repostiory.FindBy<Category>(x => x.CategoryId == model.CategoryID).FirstOrDefault();
+            if (categoryIsReat == null)
+            {
+                return ResponseMsg(false, "無此類別");
+            }
+
+            Product product = new Product() { 
+                ProductName = model.ProductName,
+                CategoryId = model.CategoryID,
+                UnitPrice = model.ProductPrice,
+                UnitsInStock = (short?)model.ProductStock,
+            };
+
+            try
+            {
+                Create<Product>(product);
+                return ResponseMsg(true, "新增成功");
+            }
+            catch (Exception ex)
+            {
+                return ResponseMsg(false, $"{ex}");
+            }
+
+        }
+
         public ProductItemDTO EditProduct(int id)
         { 
             var product = Repostiory.FindBy<Product>(x=>x.ProductId == id).ProjectToSingleOrDefault<ProductItemDTO>(Mapper.ConfigurationProvider);
@@ -51,6 +85,7 @@ namespace Services
                 return ResponseMsg(false, $"{ex}"); 
             }
         }
+
         public ChangeResponseDTO DeleteProduct(int id)
         { 
             var product = Repostiory.FindBy<Product>(x=>x.ProductId == id).FirstOrDefault();
@@ -64,7 +99,6 @@ namespace Services
                 return ResponseMsg(false, $"{ex}"); ;
             }
         }
-
 
         public ChangeResponseDTO ResponseMsg(bool isSuccess, string msg)
         {

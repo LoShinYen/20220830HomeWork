@@ -29,6 +29,13 @@ namespace SqlModels.Controllers
             return View(result);
         }
 
+        [HttpPost]
+        public IActionResult Create([FromBody] ProductVM.ProductDato model)
+        {
+            var result = _productService.CreateProduct(model);
+            return Ok(result);
+        }
+
         public IActionResult Edit(int id)
         {
             ProductVM result = new()

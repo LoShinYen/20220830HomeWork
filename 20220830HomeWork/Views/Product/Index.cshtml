@@ -1,6 +1,45 @@
 ﻿@model ProductVM
+@section Css{
+<link rel="stylesheet" href="~/css/product/index.css" asp-append-version="true" />
+}
+<div class="col-12 d-flex flex-wrap">
+	<div class="col-12 mb-2 d-flex justify-content-end">
+		<button class="Btn-Product btn btn-success">新增</button>
+		<button class="Btn-Cancel btn btn-danger" style="display: none;">取消</button>
+	</div>
 
-<div >
+	<div class="Product-Box" style="display: none;">
+		<div class="d-flex flex-wrap m-auto">
+
+			<div class="col-12 my-2">
+				<label>@Html.DisplayNameFor(model=>model.ProductList[0].ProductName)</label>
+				<input class="Add-Content" type="text" />
+			</div>
+
+			<div class="col-12 my-2">
+				<label>@Html.DisplayNameFor(model=>model.ProductList[0].ProductPrice)</label>
+				<input class="Add-Content" type="number" />
+			</div>
+
+			<div class="col-12 my-2">
+
+				<label>@Html.DisplayNameFor(model => model.ProductList[0].ProductStock)</label>
+				<input class="Add-Content" type="number" />
+			</div>
+
+			<div class="col-12 my-2">
+				<label>@Html.DisplayNameFor(model => model.ProductList[0].CategoryID)</label>
+				<input class="Add-Content" type="number" />
+			</div>
+
+			<div class="col-12 d-flex justify-content-end my-2">
+				<input type="submit" class="Btn-Save btn btn-success" value="保存" />
+			</div>
+		</div>
+
+
+	</div>
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -31,9 +70,9 @@
 					<td>
 						@item.ProductStock
 					</td>
-					<td>
-						<a asp-action="Edit" asp-route-id="@item.ProductId" class="col-4 btn btn-primary">編輯</a> |
-						<a onclick="Delete(@item.ProductId)" class="col-4 btn btn-danger">刪除</a> |
+					<td class="d-flex flex-wrap">
+						<a asp-action="Edit" asp-route-id="@item.ProductId" class="col-5 mr-1 btn btn-primary">編輯</a>
+						<a onclick="Delete(@item.ProductId)" class="col-5 btn btn-danger ">刪除</a>
 
 					</td>
 				</tr>
@@ -47,7 +86,7 @@
 
 
 @section JaveScript{
-	<script src="~/js/product/index.js"></script>
+<script src="~/js/product/index.js"></script>
 }
 
 
