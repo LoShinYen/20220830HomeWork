@@ -1,29 +1,61 @@
 ﻿@model ProductVM
 
-
-<table>
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach(var item in Model.ProductList)
-		{
+@*<nav>
+	<ul>
+	<li class="btn btn-primary">編輯</li>
+	<li class="btn btn-success">確認</li>
+	<li class="btn btn-primary">刪除</li>
+	</ul>
+	</nav>*@
+<div >
+	<table class="table">
+		<thead>
 			<tr>
-				<td>@item.ProductId</td>
-				<td>@item.ProductName</td>
-				<td>@item.CategoryID</td>
-				<td>@item.CategoryName</td>
-				<td>@item.ProductPrice</td>
-				<td>@item.ProductStock</td>
+				<th>@Html.DisplayNameFor(model=>model.ProductList[0].ProductId)</th>
+				<th>@Html.DisplayNameFor(model=>model.ProductList[0].ProductName)</th>
+				<th>@Html.DisplayNameFor(model=>model.ProductList[0].CategoryName)</th>
+				<th>@Html.DisplayNameFor(model=>model.ProductList[0].ProductPrice)</th>
+				<th>@Html.DisplayNameFor(model=>model.ProductList[0].ProductStock)</th>
+				<th></th>
 			</tr>
-		}
+		</thead>
+		<tbody>
+			@foreach (var item in Model.ProductList)
+			{
+				<tr>
+					<td>
+						@item.ProductId
+					</td>
+					<td>
+						@item.ProductName
+					</td>
+					<td>
+						@item.CategoryName
+					</td>
+					<td>
+						@item.ProductPrice
+					</td>
+					<td>
+						@item.ProductStock
+					</td>
+					<td>
+						<a asp-action="Edit" asp-route-id="@item.ProductId" class="col-4 btn btn-primary">編輯</a> |
+						<a asp-action="" asp-route-id="" class="col-4 btn btn-danger">刪除</a> |
+						@*<a asp-action="" asp-route-id="" class="col-4 btn btn-primary"></a> |*@
 
-	</tbody>
-</table>
+					</td>
+				</tr>
+			}
+
+		</tbody>
+	</table>
+
+</div>
+
+
+
+
+
+
+
+

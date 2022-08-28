@@ -10,6 +10,8 @@ namespace SqlModels.DTOModels
     public class ProductVM
     {
         public List<ProductDato> ProductList { get; set; }
+        public ProductDato EditProduct { get; set; }
+
         public class ProductDato {
             [Display(Name ="產品ID")]
             public int ProductId { get; set; }
@@ -23,7 +25,8 @@ namespace SqlModels.DTOModels
             public int CategoryID { get; set; }
             [Display(Name = "產品類別")]
             public string CategoryName { get; set; }
-        } 
+        }
+        
 
     }
 }

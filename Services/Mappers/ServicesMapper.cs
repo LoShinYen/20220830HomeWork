@@ -18,6 +18,11 @@ namespace Services.Mappers
                 .ForMember(d => d.ProductStock, p => p.MapFrom(x => x.UnitsInStock))
                 .ForMember(d => d.CategoryID, p => p.MapFrom(x => x.Category.CategoryId))
                 .ForMember(d => d.CategoryName, p => p.MapFrom(x => x.Category.CategoryName));
+
+            CreateMap<Product, ProductItemDTO>()
+                .ForMember(d => d.ProductPrice, p => p.MapFrom(x => x.UnitPrice))
+                .ForMember(d => d.ProductStock, p => p.MapFrom(x => x.UnitsInStock))
+                .ForMember(d => d.CategoryID, p => p.MapFrom(x => x.Category.CategoryId));
         }
     }
 }

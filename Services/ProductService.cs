@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Services
 {
     public class ProductService : BaseService, IProductService
@@ -20,19 +21,38 @@ namespace Services
 
         public List<ProductDTO> ProductList()
         {
-            //var productList = Repostiory.GetAll<Product>().Include(x => x.Category).Select(item => new ProductDTO
-            //{ 
-            //    ProductId = item.ProductId,
-            //    ProductName = item.ProductName,
-            //    CategoryID = item.Category.CategoryId,
-            //    CategoryName = item.Category.CategoryName,
-            //    ProductPrice = item.UnitPrice,
-            //    ProductStock = (int)item.UnitsInStock
-            //}).ToList();
-            var productList = Repostiory.GetAll<Product>().ProjectToList<ProductDTO>(Mapper.ConfigurationProvider);
+            var product = Repostiory.GetAll<Product>().ProjectToList<ProductDTO>(Mapper.ConfigurationProvider);
 
-            return productList;
+            return product;
         }
+
+        public ProductItemDTO EditProduct(int id)
+        { 
+            var product = Repostiory.FindBy<Product>(x=>x.ProductId == id).ProjectToSingleOrDefault<ProductItemDTO>(Mapper.ConfigurationProvider);
+
+            return product;
+        }
+
+        public bool EditProduct(ProductVM model)
+        {
+            var data = model.EditProduct;
+            var product = Repostiory.FindBy<Product>(x => x.ProductId == data.ProductId).FirstOrDefault();
+            product.ProductName = data.ProductName;
+            product.CategoryId = data.CategoryID;
+            product.UnitsInStock = (short?)data.ProductStock;
+            product.UnitPrice = data.ProductPrice;
+            try
+            {
+                Update<Product>(product);
+                return true;
+            }
+            catch (Exception ex)
+            { 
+                return false ;
+            }
+
+        }
+
 
 
     }

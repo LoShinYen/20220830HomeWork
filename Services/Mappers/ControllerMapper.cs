@@ -14,6 +14,7 @@ namespace Services.Mappers
         public ControllerMapper()
         {
             CreateMap<ProductDTO, ProductDato>();
+            CreateMap<ProductItemDTO, ProductDato>();
         }
 
     }

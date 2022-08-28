@@ -28,7 +28,40 @@ namespace SqlModels.Controllers
             return View(result);
         }
 
-        
+        public IActionResult Edit(int id)
+        {
+            ProductVM result = new()
+            {
+                EditProduct = _mapper.Map<ProductDato>(_productService.EditProduct(id))
+            };
+            if (TempData["Edit"] != null)
+            {
+                string msg = (string)TempData["Edit"];
+                ViewData["msg"] = msg;
+            }
+            return View(result);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([FromForm] ProductVM model)
+        {
+            var result = _productService.EditProduct(model);
+            if (result == true)
+            {
+                TempData["Edit"] = "更改成功";
+            }
+            else
+            {
+                TempData["Edit"] = "更改失敗";
+            }
+            return RedirectToAction("Edit",model.EditProduct.ProductId);
+        }
+
+
+        public IActionResult Delete(int id)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

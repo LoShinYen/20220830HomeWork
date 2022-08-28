@@ -1,0 +1,37 @@
+﻿@model ProductVM
+@{
+	string msg = (string)ViewData["msg"];
+}
+
+
+	<input id="msg" type="hidden"  value="@msg">
+
+
+<div class="col-12 d-flex flex-wrap">
+
+	<form method="post" asp-controller="Product" asp-action="Edit">
+		@Html.AntiForgeryToken()
+			<input type="hidden" asp-for="EditProduct.ProductId"/>
+
+			<label>@Html.DisplayNameFor(model => model.EditProduct.ProductName)</label>
+			<input type="text" asp-for="EditProduct.ProductName"/>
+
+			<label>@Html.DisplayNameFor(model => model.EditProduct.ProductPrice)</label>
+			<input type="number"asp-for="EditProduct.ProductPrice"/>
+
+			<label>@Html.DisplayNameFor(model => model.EditProduct.ProductStock)</label>
+			<input type="number" asp-for="EditProduct.ProductStock"/>
+
+			<label>@Html.DisplayNameFor(model => model.EditProduct.CategoryID)</label>
+			<input type="number" asp-for="EditProduct.CategoryID"/>
+
+		<input  type="submit" class="btn-primary btn-success" value="儲存"/>
+	</form>
+
+
+</div>
+
+
+@section JaveScript{
+	<script src="~/js/product/edit.js"></script>
+}

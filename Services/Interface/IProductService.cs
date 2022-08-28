@@ -10,5 +10,7 @@ namespace Services.Interface
     public interface IProductService
     {
         public List<ProductDTO> ProductList();
+        public ProductItemDTO EditProduct(int id);
+        public bool EditProduct(ProductVM model);
     }
 }
